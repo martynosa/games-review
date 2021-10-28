@@ -21,14 +21,12 @@ const showItemCreate = (req, res) => {
 
 const itemCreate = async (req, res) => {
     const itemToCreate = req.body;
-    console.log(itemToCreate);
     try {
         await services.createItem(itemToCreate);
         res.redirect('/');
     } catch (error) {
         res.render('create', { error });
     }
-
 };
 
 const showDetails = async (req, res) => {

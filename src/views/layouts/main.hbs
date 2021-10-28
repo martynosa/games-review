@@ -15,10 +15,10 @@
     <title>Games Review</title>
 </head>
 
-<body style="background-color: #0E0E10">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-5">
+<body class="font-monospace" style="background-color: #0E0E10">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Gamopedia</a>
+            <a class="navbar-brand" href="/">Game Review</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -52,17 +52,16 @@
                     {{/unless}}
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-3 border border-primary text-white" type="search" placeholder="Search ..."
-                        aria-label="Search" style="background-color: #0E0E10">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <input class="form-control me-3 border border-primary text-white" type="search"
+                        placeholder="Search ..." aria-label="Search" style="background-color: #0E0E10">
+                    <button class="btn btn-primary" type="submit">Search!</button>
                 </form>
             </div>
         </div>
     </nav>
-
     {{!-- notification --}}
     {{#if error}}
-    <div class="d-flex align-items-center text-white bg-primary border-0">
+    <div class="d-flex align-items-center text-white bg-danger border-0">
         <div class="toast-body">
             {{error}}
         </div>
