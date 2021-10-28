@@ -18,12 +18,16 @@ const itemSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'user'
     },
-    likes: [
+    enrolled: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'user'
         }
-    ]
+    ],
+    year: {
+        type: Number,
+        required: true,
+    }
 }, { timestamps: true });
 
 const itemModel = mongoose.model('item', itemSchema);

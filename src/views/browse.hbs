@@ -1,16 +1,18 @@
 <main>
     <div class="container text-white">
-        <h1 class="display-1 text-center  mb-5">Browse</h1>
+        <h1 class="display-1 text-center mb-5">Browse</h1>
         {{#if allItems}}
         <div class="row row-cols-1 row-cols-md-4 g-4">
             {{#each allItems}}
             <div class="col">
-                <div class="card shadow" style="background-color: #212529;">
+                <div class="card" style="background-color: #212529;">
+                    <div class="card-header">{{name}}</div>
                     <img src={{imageUrl}} class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
                         <p class="card-text">{{description}}</p>
+                        <p class="card-text">{{year}}</p>
                     </div>
+                    <a href="/item/{{_id}}" class="btn btn-primary">Details</a>
                 </div>
             </div>
             {{/each}}

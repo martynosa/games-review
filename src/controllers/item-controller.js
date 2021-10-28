@@ -20,7 +20,7 @@ const showItemCreate = (req, res) => {
 };
 
 const itemCreate = async (req, res) => {
-    const itemToCreate = req.body;
+    const itemToCreate = { ...req.body, ownerId: req.user.id };
     try {
         await services.createItem(itemToCreate);
         res.redirect('/');
@@ -36,7 +36,7 @@ const showDetails = async (req, res) => {
 
     try {
         const item = await services.getSingleItem(itemId);
-
+        console.log(item);
         if (req.user) {
             const userId = req.user.id;
             isOwner = item.ownerId == userId;
@@ -62,13 +62,6 @@ const showEdit = async (req, res) => {
 const editItem = async (req, res) => {
     const id = req.params.id;
     let editedItem = req.body;
-
-    if (req.body.isPublic) {
-        editedItem = { ...req.body, isPublic: true };
-    } else {
-        editedItem = { ...req.body, isPublic: false };
-    }
-
     try {
         await services.editItem(id, editedItem);
         res.redirect(`/item/${id}`);
@@ -82,7 +75,7 @@ const deleteItem = async (req, res) => {
 
     try {
         await services.deleteItem(idToDelete);
-        res.redirect('/item/allItems');
+        res.redirect('/item/browse');
     } catch (error) {
         res.redirect(`/item/${idToDelete}/edit`)
     }

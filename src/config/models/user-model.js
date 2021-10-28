@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: [5, 'Password must be at least 8 characters long!']
     },
-    liked:[
+    courses:[
         {
             type: mongoose.Types.ObjectId,
             ref: 'item'

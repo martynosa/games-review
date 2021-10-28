@@ -1,20 +1,23 @@
 <main>
     <div class="container text-white">
-        <h1 class="display-1 text-center  mb-5">Browse</h1>
-        <div class="card mb-3" style="max-width: 540px;">
+        <h1 class="display-1 text-center mb-5">Browse</h1>
+        <div class="card mb-3" style="background-color: #212529;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
+                    <img src={{item.imageUrl}} class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                        <p class="card-text"><small class="text-muted">{{item.year}}</small></p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/item/{{item._id}}/edit" class="btn btn-warning">Edit</a>
+            <a href="/item/{{item._id}}/delete" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </main>
