@@ -97,10 +97,10 @@ router.post('/create', middlewares.isGuest, itemCreate);
 //details
 router.get('/:id', showDetails);
 //edit
-router.get('/:id/edit', middlewares.isOwner, showEdit);
-router.post('/:id/edit', middlewares.isOwner, editItem);
+router.get('/:id/edit', middlewares.isGuest, middlewares.isOwner, showEdit);
+router.post('/:id/edit', middlewares.isGuest, middlewares.isOwner, editItem);
 //delete
-router.get('/:id/delete', middlewares.isOwner, deleteItem);
-router.get('/:id/like', like);
+router.get('/:id/delete', middlewares.isGuest, middlewares.isOwner, deleteItem);
+router.get('/:id/like', middlewares.isGuest, like);
 
 module.exports = router;
