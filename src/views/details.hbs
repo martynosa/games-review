@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+        {{#unless isGuest}}
         {{#if isOwner}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="/item/{{item._id}}/edit" class="btn btn-warning">Edit!</a>
@@ -31,5 +32,6 @@
         </div>
         {{/unless}}
         {{/if}}
+        {{/unless}}
     </div>
 </main>

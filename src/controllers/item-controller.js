@@ -11,7 +11,7 @@ const showAllItems = async (req, res) => {
         const allItems = await services.getAllItems();
         res.render('browse', { allItems });
     } catch (error) {
-        res.render('browse', { error })
+        res.render('browse', { error: 'Something is wrong! Try again later...' })
     }
 };
 
@@ -33,10 +33,8 @@ const showDetails = async (req, res) => {
     const itemId = req.params.id;
     let isOwner = false;
     let isLiked = false;
-
     try {
         const item = await services.getSingleItem(itemId);
-        console.log(item);
         if (req.user) {
             const userId = req.user.id;
             isOwner = item.ownerId == userId;
@@ -44,13 +42,12 @@ const showDetails = async (req, res) => {
         }
         res.render('details', { item, isOwner, isLiked });
     } catch (error) {
-        res.render('details', { error });
+        res.render('details', { error: 'Something is wrong! Try again later...' });
     }
 };
 
 const showEdit = async (req, res) => {
     const itemId = req.params.id;
-
     try {
         const itemToEdit = await services.getSingleItem(itemId);
         res.render('edit', { itemToEdit });
@@ -61,7 +58,7 @@ const showEdit = async (req, res) => {
 
 const editItem = async (req, res) => {
     const id = req.params.id;
-    let editedItem = req.body;
+    const editedItem = req.body;
     try {
         await services.editItem(id, editedItem);
         res.redirect(`/item/${id}`);
@@ -72,7 +69,6 @@ const editItem = async (req, res) => {
 
 const deleteItem = async (req, res) => {
     const idToDelete = req.params.id;
-
     try {
         await services.deleteItem(idToDelete);
         res.redirect('/item/browse');
@@ -84,13 +80,12 @@ const deleteItem = async (req, res) => {
 const like = async (req, res) => {
     const userId = req.user.id;
     const itemId = req.params.id;
-
     try {
         await services.like(userId, itemId);
         await authServices.addToLikedGames(userId, itemId);
         res.redirect(`/item/${itemId}`);
     } catch (error) {
-        res.render('details', { error });
+        res.render('details', { error: 'Something is wrong! Try again later...' });
     }
 };
 
