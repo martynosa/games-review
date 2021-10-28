@@ -1,0 +1,24 @@
+<main>
+    <div class="container text-center text-white w-50">
+        <h1 class="display-1 mb-5">Create Game</h1>
+        <form action="/item/create" method="POST">
+            <div class="mb-3">
+                <label for="usernameInput" class="form-label">Title</label>
+                <input type="text" class="form-control text-white" id="usernameInput"
+                    placeholder="super galactic destroyer 2 or somethin' ..." name="name"
+                    style="background-color:#212529">
+            </div>
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Description</label>
+                <input type="text" class="form-control text-white" id="descriptionInput"
+                    placeholder="super duper awesome game ..." name="description" style="background-color:#212529">
+            </div>
+            <div class="mb-3">
+                <label for="imageUrlInput" class="form-label">Image</label>
+                <input type="text" class="form-control text-white" id="imageUrlInput" placeholder="https:// ..."
+                    name="imageUrl" style="background-color:#212529">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</main>
