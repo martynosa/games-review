@@ -51,7 +51,7 @@ const verifyToken = (token) => jwtVerify(token, SECRET);
 
 const getUser = (id) => userModel.findById(id).populate('courses').lean();
 
-const addCourse = (userId, itemId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { courses: itemId } });
+const addToLikedGames = (userId, itemId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { likedGames: itemId } });
 
 const authServices = {
     registerUser,
@@ -59,7 +59,7 @@ const authServices = {
     createToken,
     verifyToken,
     getUser,
-    addCourse
+    addToLikedGames
 };
 
 module.exports = authServices;

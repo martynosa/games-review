@@ -10,12 +10,11 @@ const deleteItem = (idToDelete) => itemModel.findByIdAndDelete(idToDelete);
 
 const editItem = (id, editedItem) => itemModel.findByIdAndUpdate(id, editedItem, { runValidators: true });
 
-//enroll
-const enrollIntoCourse = (userId, itemId) => itemModel.findOneAndUpdate({ _id: itemId }, { $push: { enrolled: userId } });
+const like = (userId, itemId) => itemModel.findOneAndUpdate({ _id: itemId }, { $push: { likes: userId } });
 
-const isEnrolled = async (userId, itemId) => {
+const isLiked = async (userId, itemId) => {
     const item = await itemModel.findById(itemId);
-    return item.enrolled.some(e => e._id == userId);
+    return item.likes.some(e => e._id == userId);
 };
 
 const services = {
@@ -24,8 +23,8 @@ const services = {
     createItem,
     deleteItem,
     editItem,
-    enrollIntoCourse,
-    isEnrolled,
+    like,
+    isLiked,
 }
 
 module.exports = services;

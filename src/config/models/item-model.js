@@ -18,7 +18,7 @@ const itemSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'user'
     },
-    enrolled: [
+    likes: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'user'

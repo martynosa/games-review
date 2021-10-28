@@ -32,7 +32,7 @@ const itemCreate = async (req, res) => {
 const showDetails = async (req, res) => {
     const itemId = req.params.id;
     let isOwner = false;
-    let isEnrolled = false;
+    let isLiked = false;
 
     try {
         const item = await services.getSingleItem(itemId);
@@ -40,9 +40,9 @@ const showDetails = async (req, res) => {
         if (req.user) {
             const userId = req.user.id;
             isOwner = item.ownerId == userId;
-            isEnrolled = await services.isEnrolled(userId, itemId);
+            isLiked = await services.isLiked(userId, itemId);
         }
-        res.render('details', { item, isOwner, isEnrolled });
+        res.render('details', { item, isOwner, isLiked });
     } catch (error) {
         res.render('details', { error });
     }
@@ -81,14 +81,13 @@ const deleteItem = async (req, res) => {
     }
 };
 
-//enroll//relations
-const enroll = async (req, res) => {
+const like = async (req, res) => {
     const userId = req.user.id;
     const itemId = req.params.id;
 
     try {
-        await services.enrollIntoCourse(userId, itemId);
-        await authServices.addCourse(userId, itemId);
+        await services.like(userId, itemId);
+        await authServices.addToLikedGames(userId, itemId);
         res.redirect(`/item/${itemId}`);
     } catch (error) {
         res.render('details', { error });
@@ -107,6 +106,6 @@ router.get('/:id/edit', middlewares.isOwner, showEdit);
 router.post('/:id/edit', middlewares.isOwner, editItem);
 //delete
 router.get('/:id/delete', middlewares.isOwner, deleteItem);
-router.get('/:id/enroll', enroll);
+router.get('/:id/like', like);
 
 module.exports = router;

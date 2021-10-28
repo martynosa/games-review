@@ -6,15 +6,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: [true, 'Username is required!'],
-        minlength: [5, 'Username must be at least 5 characters long!'],
-        validate: [/^[a-zA-Z0-9]+$/, 'Username should consist of english letters and digits only!']
+        minlength: [5, 'Username must be at least 5 characters long!']
     },
     password: {
         type: String,
         required: true,
-        minlength: [5, 'Password must be at least 8 characters long!']
+        minlength: [8, 'Password must be at least 8 characters long!']
     },
-    courses:[
+    likedGames: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'item'

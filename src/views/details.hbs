@@ -15,9 +15,21 @@
                 </div>
             </div>
         </div>
+        {{#if isOwner}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/item/{{item._id}}/edit" class="btn btn-warning">Edit</a>
-            <a href="/item/{{item._id}}/delete" class="btn btn-danger">Delete</a>
+            <a href="/item/{{item._id}}/edit" class="btn btn-warning">Edit!</a>
+            <a href="/item/{{item._id}}/delete" class="btn btn-danger">Delete!</a>
         </div>
+        {{else}}
+        {{#unless isLiked }}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/item/{{item._id}}/like" class="btn btn-danger">Like!</a>
+        </div>
+        {{else}}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/item/{{item._id}}/like" class="btn btn-danger disabled">Liked!</a>
+        </div>
+        {{/unless}}
+        {{/if}}
     </div>
 </main>
