@@ -1,28 +1,34 @@
 <main>
     <div class="container text-center text-white w-50">
         <h1 class="display-1 mb-5">Edit Game</h1>
-        <form action="/item/{{itemToEdit._id}}/edit" method="POST">
+        <form action="/item/{{_id}}/edit" method="POST">
             <div class="mb-3">
                 <label for="usernameInput" class="form-label">Title</label>
                 <input type="text" class="form-control text-white" id="usernameInput"
-                    placeholder="super galactic destroyer 2 or somethin' ..." name="name"
-                    style="background-color:#212529" value={{itemToEdit.name}}>
+                    placeholder="super galactic destroyer 2 or somethin' ..." name="title"
+                    style="background-color:#212529" value={{title}}>
+            </div>
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Ganre</label>
+                <input type="text" class="form-control text-white" id="descriptionInput"
+                    placeholder="shooter, strategy ..." name="ganreInput" style="background-color:#212529"
+                    value={{ganre}}>
+            </div>
+            <div class="mb-3">
+                <label for="yearInput" class="form-label">Release year</label>
+                <input type="number" class="form-control text-white" id="descriptionInput" placeholder="1999 ..."
+                    name="releaseYear" style="background-color:#212529" value={{releaseYear}}>
             </div>
             <div class="mb-3">
                 <label for="descriptionInput" class="form-label">Description</label>
                 <input type="text" class="form-control text-white" id="descriptionInput"
                     placeholder="super duper awesome game ..." name="description" style="background-color:#212529"
-                    value={{itemToEdit.description}}>
-            </div>
-            <div class="mb-3">
-                <label for="yearInput" class="form-label">Year</label>
-                <input type="number" class="form-control text-white" id="descriptionInput" placeholder="1999 ..."
-                    name="releaseYear" style="background-color:#212529" value={{itemToEdit.releaseYear}}>
+                    value={{description}}>
             </div>
             <div class="mb-3">
                 <label for="imageUrlInput" class="form-label">Image</label>
                 <input type="text" class="form-control text-white" id="imageUrlInput" placeholder="https:// ..."
-                    name="imageUrl" style="background-color:#212529" value={{itemToEdit.imageUrl}}>
+                    name="imageUrl" style="background-color:#212529" value={{imageUrl}}>
             </div>
             <button type="submit" class="btn btn-warning">Edit!</button>
         </form>

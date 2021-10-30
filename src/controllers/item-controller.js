@@ -50,9 +50,9 @@ const showEdit = async (req, res) => {
     const itemId = req.params.id;
     try {
         const itemToEdit = await services.getSingleItem(itemId);
-        res.render('edit', { itemToEdit });
+        res.render('edit', { ...itemToEdit });
     } catch (error) {
-        res.render('edit', { itemToEdit, error });
+        res.render('edit', { ...itemToEdit, error });
     }
 };
 

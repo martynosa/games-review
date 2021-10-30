@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
+                        <h5 class="card-title">{{title}}</h5>
                         <p class="card-text">Description: {{description}}</p>
                         <p class="card-text"><small class="text-muted">Ganre: {{ganre}}</small></p>
                         <p class="card-text"><small class="text-muted">Release year: {{releaseYear}}</small></p>
@@ -20,8 +20,8 @@
         {{#unless isGuest}}
         {{#if isOwner}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/item/{{item._id}}/edit" class="btn btn-warning">Edit!</a>
-            <a href="/item/{{item._id}}/delete" class="btn btn-danger">Delete!</a>
+            <a href="/item/{{_id}}/edit" class="btn btn-warning">Edit!</a>
+            <a href="/item/{{_id}}/delete" class="btn btn-danger">Delete!</a>
         </div>
         {{else}}
         {{#unless isLiked }}
