@@ -19,5 +19,5 @@ app.use(middlewares.auth);
 app.use(router);
 
 initMongoose()
-    .then(() => app.listen(PORT, () => console.log('running on 5000...')))
+    .then(() => app.listen(PORT, () => console.log(`running on ${PORT}...`)))
     .catch(error => console.log('initializing failed:' + error));
