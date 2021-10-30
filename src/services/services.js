@@ -1,16 +1,16 @@
 const itemModel = require('../config/models/item-model');
 
-const getAllItems = () => itemModel.find().lean();
+const getAllGames = () => itemModel.find().lean();
 
-const getSingleItem = (id) => itemModel.findById(id).lean();
+const getSingleGame = (gameId) => itemModel.findById(gameId).lean();
 
-const createItem = (itemToCreate) => itemModel.create(itemToCreate);
+const createGame = (gameToCreate) => itemModel.create(gameToCreate);
 
-const deleteItem = (idToDelete) => itemModel.findByIdAndDelete(idToDelete);
+const deleteGame = (idToDelete) => itemModel.findByIdAndDelete(idToDelete);
 
-const editItem = (id, editedItem) => itemModel.findByIdAndUpdate(id, editedItem, { runValidators: true });
+const editGame = (id, editedGame) => itemModel.findByIdAndUpdate(id, editedGame, { runValidators: true });
 
-const like = (userId, itemId) => itemModel.findOneAndUpdate({ _id: itemId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
+const like = (userId, gameId) => itemModel.findOneAndUpdate({ _id: gameId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
 
 const isLiked = async (userId, itemId) => {
     const item = await itemModel.findById(itemId);
@@ -18,11 +18,11 @@ const isLiked = async (userId, itemId) => {
 };
 
 const services = {
-    getAllItems,
-    getSingleItem,
-    createItem,
-    deleteItem,
-    editItem,
+    getAllGames,
+    getSingleGame,
+    createGame,
+    deleteGame,
+    editGame,
     like,
     isLiked,
 }

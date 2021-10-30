@@ -35,10 +35,10 @@ const isGuest = (req, res, next) => {
 
 //blocks non owners from modifying the created item and redirects them back to the details page of the same item
 const isOwner = async (req, res, next) => {
-    const itemId = req.params.id;
-    const itemToEdit = await services.getSingleItem(itemId);
-    if (req.user.id != itemToEdit.ownerId) {
-        return res.redirect(`/item/${itemId}`);
+    const gameId = req.params.id;
+    const gameToEdit = await services.getSingleGame(gameId);
+    if (req.user.id != gameToEdit.ownerId) {
+        return res.redirect(`/item/${gameId}`);
     }
     next()
 };

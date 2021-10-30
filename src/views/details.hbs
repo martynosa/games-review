@@ -20,17 +20,17 @@
         {{#unless isGuest}}
         {{#if isOwner}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/item/{{_id}}/edit" class="btn btn-warning">Edit!</a>
-            <a href="/item/{{_id}}/delete" class="btn btn-danger">Delete!</a>
+            <a href="/game/{{_id}}/edit" class="btn btn-warning">Edit!</a>
+            <a href="/game/{{_id}}/delete" class="btn btn-danger">Delete!</a>
         </div>
         {{else}}
         {{#unless isLiked }}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/item/{{_id}}/like" class="btn btn-danger">Like!</a>
+            <a href="/game/{{_id}}/like" class="btn btn-danger">Like!</a>
         </div>
         {{else}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/item/{{_id}}/like" class="btn btn-danger disabled">Liked!</a>
+            <a href="/game/{{_id}}/like" class="btn btn-danger disabled">Liked!</a>
         </div>
         {{/unless}}
         {{/if}}

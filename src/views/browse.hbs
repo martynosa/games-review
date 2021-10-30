@@ -1,9 +1,9 @@
 <main>
     <div class="container text-white">
         <h1 class="display-1 text-center mb-5">Browse</h1>
-        {{#if allItems}}
+        {{#if allGames}}
         <div class="row row-cols-1 row-cols-md-4 g-4">
-            {{#each allItems}}
+            {{#each allGames}}
             <div class="col">
                 <div class="card" style="background-color: #212529;">
                     <div class="card-header">{{title}}</div>
@@ -13,7 +13,7 @@
                         <p class="card-text"><small class="text-muted">Release year: {{releaseYear}}</small></p>
                         <p class="card-text">👍 {{rating}}</p>
                     </div>
-                    <a href="/item/{{_id}}" class="btn btn-primary">Details</a>
+                    <a href="/game/{{_id}}" class="btn btn-primary">Details</a>
                 </div>
             </div>
             {{/each}}

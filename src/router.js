@@ -1,14 +1,14 @@
 const express = require('express');
 
 const authController = require('./controllers/auth-controller');
-const itemController = require('./controllers/item-controller');
+const gameController = require('./controllers/game-controller');
 
 const router = express.Router();
 
 router.use('/auth', authController);
-router.use('/item', itemController);
+router.use('/game', gameController);
 router.get('/', (req, res) => {
-    res.redirect('/item/browse');
+    res.redirect('/game/browse');
 });
 router.get('/about', (req, res) => {
     res.render('about');
