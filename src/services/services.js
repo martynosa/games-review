@@ -12,9 +12,9 @@ const editGame = (id, editedGame) => itemModel.findByIdAndUpdate(id, editedGame,
 
 const like = (userId, gameId) => itemModel.findOneAndUpdate({ _id: gameId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
 
-const isLiked = async (userId, itemId) => {
-    const item = await itemModel.findById(itemId);
-    return item.likedBy.some(e => e._id == userId);
+const isLiked = async (userId, gameId) => {
+    const game = await itemModel.findById(gameId);
+    return game.likedBy.some(e => e._id == userId);
 };
 
 const services = {

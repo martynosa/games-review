@@ -51,7 +51,7 @@ const verifyToken = (token) => jwtVerify(token, SECRET);
 
 const getUser = (id) => userModel.findById(id).populate('likedGames').lean();
 
-const addToLikedGames = (userId, itemId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { likedGames: itemId } });
+const addToLikedGames = (userId, gameId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { likedGames: gameId } });
 
 const authServices = {
     registerUser,

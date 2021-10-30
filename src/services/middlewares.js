@@ -25,7 +25,7 @@ const auth = async (req, res, next) => {
 
 };
 
-// blocks non logged users from modifying the created item and redirects them to login
+//blocks non logged users from modifying the created game and redirects them to login
 const isGuest = (req, res, next) => {
     if (!req.user) {
         return res.redirect('/auth/login');
@@ -33,12 +33,12 @@ const isGuest = (req, res, next) => {
     next();
 };
 
-//blocks non owners from modifying the created item and redirects them back to the details page of the same item
+//blocks non owners from modifying the created game and redirects them back to the details page of the same game
 const isOwner = async (req, res, next) => {
     const gameId = req.params.id;
     const gameToEdit = await services.getSingleGame(gameId);
     if (req.user.id != gameToEdit.ownerId) {
-        return res.redirect(`/item/${gameId}`);
+        return res.redirect(`/game/${gameId}`);
     }
     next()
 };
