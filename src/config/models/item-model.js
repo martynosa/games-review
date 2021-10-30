@@ -3,7 +3,15 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Name is required!"],
+        required: [true, "Title is required!"],
+    },
+    ganre: {
+        type: String,
+        required: [true, 'Ganre is required!'],
+    },
+    releaseYear: {
+        type: Number,
+        required: true,
     },
     description: {
         type: String,
@@ -26,10 +34,6 @@ const itemSchema = new mongoose.Schema({
     ],
     rating: {
         type: Number
-    },
-    releaseYear: {
-        type: Number,
-        required: true,
     }
 }, { timestamps: true });
 

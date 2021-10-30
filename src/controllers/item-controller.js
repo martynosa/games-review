@@ -40,7 +40,7 @@ const showDetails = async (req, res) => {
             isOwner = item.ownerId == userId;
             isLiked = await services.isLiked(userId, itemId);
         }
-        res.render('details', { item, isOwner, isLiked });
+        res.render('details', { ...item, isOwner, isLiked });
     } catch (error) {
         res.render('details', { error: 'Something is wrong! Try again later...' });
     }
