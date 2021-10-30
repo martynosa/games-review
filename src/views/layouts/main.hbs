@@ -37,7 +37,7 @@
                         <a class="nav-link" href="/item/create">Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border-start" href="/auth/profile">Profile</a>
+                        <a class="nav-link border-start" href="/auth/profile">{{user.username}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="/auth/logout">Logout</a>
@@ -67,10 +67,7 @@
         </div>
     </div>
     {{/if}}
-
-    <main>
-        {{{body}}}
-    </main>
+    {{{body}}}
 </body>
 <footer class="fixed-bottom text-center p-4 text-muted">
     github.com/martynosa

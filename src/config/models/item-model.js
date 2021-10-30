@@ -18,13 +18,16 @@ const itemSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'user'
     },
-    likes: [
+    likedBy: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'user'
         }
     ],
-    year: {
+    rating: {
+        type: Number
+    },
+    releaseYear: {
         type: Number,
         required: true,
     }

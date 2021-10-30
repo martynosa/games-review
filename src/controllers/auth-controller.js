@@ -43,15 +43,14 @@ const logout = async (req, res) => {
     res.redirect('/');
 };
 
-//TODO: the whole thing
-const myProfile = async (req, res) => {
+const profile = async (req, res) => {
     const userId = req.user.id;
     try {
         const currentUser = await authServices.getUser(userId);
-        let courses = currentUser.courses.map(x => x.name).join(', ');
-        res.render('auth/myProfile', { ...currentUser, courses })
+        const likedGames = currentUser.likedGames;
+        res.render('auth/profile', { ...currentUser, likedGames })
     } catch (error) {
-        res.render('auth/myProfile', { error });
+        res.render('auth/profile', { error });
     }
 };
 
@@ -59,7 +58,7 @@ router.get('/login', middlewares.loginRegisterGuard, showLogin);
 router.get('/register', middlewares.loginRegisterGuard, showRegister);
 router.post('/register', middlewares.loginRegisterGuard, registerUser);
 router.post('/login', middlewares.loginRegisterGuard, logUser);
+router.get('/profile', middlewares.isGuest, profile);
 router.get('/logout', logout);
-router.get('/myProfile', myProfile);
 
 module.exports = router;

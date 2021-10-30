@@ -10,11 +10,11 @@ const deleteItem = (idToDelete) => itemModel.findByIdAndDelete(idToDelete);
 
 const editItem = (id, editedItem) => itemModel.findByIdAndUpdate(id, editedItem, { runValidators: true });
 
-const like = (userId, itemId) => itemModel.findOneAndUpdate({ _id: itemId }, { $push: { likes: userId } });
+const like = (userId, itemId) => itemModel.findOneAndUpdate({ _id: itemId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
 
 const isLiked = async (userId, itemId) => {
     const item = await itemModel.findById(itemId);
-    return item.likes.some(e => e._id == userId);
+    return item.likedBy.some(e => e._id == userId);
 };
 
 const services = {

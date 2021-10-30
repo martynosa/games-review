@@ -20,7 +20,7 @@ const showItemCreate = (req, res) => {
 };
 
 const itemCreate = async (req, res) => {
-    const itemToCreate = { ...req.body, ownerId: req.user.id };
+    const itemToCreate = { ...req.body, ownerId: req.user.id, rating: 0 };
     try {
         await services.createItem(itemToCreate);
         res.redirect('/');
