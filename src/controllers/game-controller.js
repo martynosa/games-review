@@ -20,9 +20,11 @@ const showGameCreate = (req, res) => {
 };
 
 const gameCreate = async (req, res) => {
-    const gameToCreate = { ...req.body, ownerId: req.user.id, rating: 0 };
+    const userId = req.user.id;
+    const gameToCreate = { ...req.body, ownerId: userId, rating: 0 };
     try {
-        await services.createGame(gameToCreate);
+        const createdGame = await services.createGame(gameToCreate);
+        await authServices.addToCreatedGames(userId, createdGame._id);
         res.redirect('/');
     } catch (error) {
         res.render('create', { error });

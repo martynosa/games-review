@@ -18,6 +18,12 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: 'game'
         }
+    ],
+    createdGames: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'game'
+        }
     ]
 });
 

@@ -49,7 +49,9 @@ const createToken = async (user) => {
 
 const verifyToken = (token) => jwtVerify(token, SECRET);
 
-const getUser = (id) => userModel.findById(id).populate('likedGames').lean();
+const getUser = (id) => userModel.findById(id).populate('likedGames').populate('createdGames').lean();
+
+const addToCreatedGames = (userId, gameId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { createdGames: gameId } });
 
 const addToLikedGames = (userId, gameId) => userModel.findOneAndUpdate({ _id: userId }, { $push: { likedGames: gameId } });
 
@@ -59,6 +61,7 @@ const authServices = {
     createToken,
     verifyToken,
     getUser,
+    addToCreatedGames,
     addToLikedGames
 };
 

@@ -48,7 +48,8 @@ const profile = async (req, res) => {
     try {
         const currentUser = await authServices.getUser(userId);
         const likedGames = currentUser.likedGames;
-        res.render('auth/profile', { ...currentUser, likedGames })
+        const createdGames = currentUser.createdGames;
+        res.render('auth/profile', { ...currentUser, likedGames, createdGames })
     } catch (error) {
         res.render('auth/profile', { error });
     }
