@@ -51,8 +51,8 @@
                     </li>
                     {{/unless}}
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-3 border border-primary text-white" type="search"
+                <form class="d-flex" action="/game/search" method='GET'>
+                    <input class="form-control me-3 border border-primary text-white" type="search" name="search"
                         placeholder="Search ..." aria-label="Search" style="background-color: #0E0E10">
                     <button class="btn btn-primary" type="submit">Search!</button>
                 </form>

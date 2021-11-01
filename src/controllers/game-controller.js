@@ -89,8 +89,20 @@ const like = async (req, res) => {
     }
 };
 
+const search = async (req, res) => {
+    const searchCriteria = req.query.search;
+    try {
+        const results = await services.search(searchCriteria);
+        res.render('browse', { allGames: results });
+    } catch (error) {
+        res.render('/browse', { error: 'Something is wrong! Try again later...' });
+    }
+};
+
 //allGames
 router.get('/browse', showAllGames);
+//search
+router.get('/search', search);
 //create
 router.get('/create', middlewares.isGuest, showGameCreate);
 router.post('/create', middlewares.isGuest, gameCreate);

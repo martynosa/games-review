@@ -17,6 +17,17 @@ const isLiked = async (userId, gameId) => {
     return game.likedBy.some(e => e._id == userId);
 };
 
+const search = async (searchCriteria) => {
+    let results = await getAllGames();
+    if (searchCriteria) {
+        const byTitle = results.filter(g => g.title.toLowerCase().includes(searchCriteria.toLowerCase()))
+        const byGanre = results.filter(g => g.ganre.toLowerCase().includes(searchCriteria.toLowerCase()))
+        const byYear = results.filter(g => g.releaseYear == Number(searchCriteria));
+        results = [...byTitle, ...byGanre, ...byYear];
+    };
+    return results;
+};
+
 const services = {
     getAllGames,
     getSingleGame,
@@ -25,6 +36,7 @@ const services = {
     editGame,
     like,
     isLiked,
-}
+    search
+};
 
 module.exports = services;
