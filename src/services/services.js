@@ -1,19 +1,19 @@
-const itemModel = require('../config/models/item-model');
+const gameModel = require('../config/models/game-model');
 
-const getAllGames = () => itemModel.find().lean();
+const getAllGames = () => gameModel.find().lean();
 
-const getSingleGame = (gameId) => itemModel.findById(gameId).lean();
+const getSingleGame = (gameId) => gameModel.findById(gameId).lean();
 
-const createGame = (gameToCreate) => itemModel.create(gameToCreate);
+const createGame = (gameToCreate) => gameModel.create(gameToCreate);
 
-const deleteGame = (idToDelete) => itemModel.findByIdAndDelete(idToDelete);
+const deleteGame = (idToDelete) => gameModel.findByIdAndDelete(idToDelete);
 
-const editGame = (id, editedGame) => itemModel.findByIdAndUpdate(id, editedGame, { runValidators: true });
+const editGame = (id, editedGame) => gameModel.findByIdAndUpdate(id, editedGame, { runValidators: true });
 
-const like = (userId, gameId) => itemModel.findOneAndUpdate({ _id: gameId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
+const like = (userId, gameId) => gameModel.findOneAndUpdate({ _id: gameId }, { $push: { likedBy: userId }, $inc: { rating: 1 } });
 
 const isLiked = async (userId, gameId) => {
-    const game = await itemModel.findById(gameId);
+    const game = await gameModel.findById(gameId);
     return game.likedBy.some(e => e._id == userId);
 };
 

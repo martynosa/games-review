@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     likedGames: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'item'
+            ref: 'game'
         }
     ]
 });
