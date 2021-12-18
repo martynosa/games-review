@@ -1,8 +1,10 @@
 # games-review
 Multi-page application made with express, handlebars and mongoDB.
 
-## npm install
+# scripts
+
+### npm install
 install the dependancies
 
-### npm start
+###4 npm start
 run the application on port 5000
