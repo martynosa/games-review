@@ -19,11 +19,16 @@ const isLiked = async (userId, gameId) => {
 
 const search = async (searchCriteria) => {
     let results = await getAllGames();
+
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    };
+
     if (searchCriteria) {
-        const byTitle = results.filter(g => g.title.toLowerCase().includes(searchCriteria.toLowerCase()))
-        const byGanre = results.filter(g => g.ganre.toLowerCase().includes(searchCriteria.toLowerCase()))
+        const byTitle = results.filter(g => g.title.toLowerCase().includes(searchCriteria.toLowerCase()));
+        const byGanre = results.filter(g => g.ganre.toLowerCase().includes(searchCriteria.toLowerCase()));
         const byYear = results.filter(g => g.releaseYear == Number(searchCriteria));
-        results = [...byTitle, ...byGanre, ...byYear];
+        results = [...byTitle, ...byGanre, ...byYear].filter(onlyUnique);
     };
     return results;
 };
